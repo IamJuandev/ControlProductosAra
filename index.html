@@ -253,7 +253,7 @@
             async function initializeApp() {
                 tableBody.innerHTML = `<tr><td colspan="4" class="text-center py-4">Cargando datos desde la API...</td></tr>`;
                 try {
-                    const apiUrl = "http://149.130.183.65:8000/articulos/";
+                    const apiUrl = "https://149.130.183.65:8000/articulos/";
                     const response = await fetch(apiUrl);
                     if (!response.ok) throw new Error(`Error en la API: ${response.status}`);
                     const apiData = await response.json();
@@ -308,7 +308,7 @@
                         unidades: parseInt(document.getElementById('units').value, 10),
                         codigo_sap: document.getElementById('sap').value
                     };
-                    const response = await fetch("http://149.130.183.65:8000/articulos/", {
+                    const response = await fetch("https://149.130.183.65:8000/articulos/", {
                         method: 'POST',
                         headers: {'Content-Type': 'application/json'},
                         body: JSON.stringify(newArticleData)
@@ -336,7 +336,7 @@
 
                 try {
                     const deletePromises = articles.map(article =>
-                        fetch(`http://149.130.183.65:8000/articulos/${article.id}`, {
+                        fetch(`https://149.130.183.65:8000/articulos/${article.id}`, {
                             method: 'DELETE'
                         })
                     );
